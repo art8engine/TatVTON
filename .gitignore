@@ -42,9 +42,14 @@ Thumbs.db
 
 # Jupyter
 .ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+notebooks/outputs/
 
 # Ruff
 .ruff_cache/
 
 # OMC
 .omc/
+
+# Internal docs
+CODE_EXPLANATION.md
