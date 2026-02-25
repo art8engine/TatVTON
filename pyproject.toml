@@ -47,6 +47,9 @@ dev = [
     "mypy>=1.8.0",
 ]
 
+[project.scripts]
+ttvton = "ttvton.cli:main"
+
 [project.urls]
 Homepage = "https://github.com/khope/tatvton"
 Repository = "https://github.com/khope/tatvton"
