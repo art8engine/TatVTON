@@ -122,7 +122,7 @@ def main(argv: list[str] | None = None) -> None:
     # -- Late imports (heavy dependencies) ---------------------------------
     from PIL import Image
 
-    from tatvton import PointPrompt, BBoxPrompt, TatVTONConfig, TatVTONPipeline
+    from tatvton import PointPrompt, BBoxPrompt, RegionPrompt, TatVTONConfig, TatVTONPipeline
 
     # -- Load images -------------------------------------------------------
     print(f"Loading body image:   {args.body}")
@@ -132,6 +132,7 @@ def main(argv: list[str] | None = None) -> None:
     tattoo_image = Image.open(args.tattoo).convert("RGB")
 
     # -- Build region prompt -----------------------------------------------
+    region: RegionPrompt
     if args.points:
         region = PointPrompt(coords=args.points)
         print(f"Region: PointPrompt with {len(args.points)} point(s)")
