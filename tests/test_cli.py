@@ -7,7 +7,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from ttvton.cli import build_parser, main, _parse_point, _parse_bbox
+from tatvton.cli import build_parser, main, _parse_point, _parse_bbox
 
 
 # ── Parser helpers ────────────────────────────────────────────────────

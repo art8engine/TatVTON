@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from PIL import Image
 
-from ttvton.types import BBoxPrompt, PointPrompt, RegionPrompt
+from tatvton.types import BBoxPrompt, PointPrompt, RegionPrompt
 
 
 class InputValidator:

@@ -7,15 +7,15 @@ import logging
 import torch
 from PIL import Image
 
-from ttvton.config import TatVTONConfig
-from ttvton.models.model_loader import ModelLoader
-from ttvton.pipeline.inpainting_engine import InpaintingEngine
-from ttvton.postprocessing.compositing import Compositor
-from ttvton.preprocessing.input_validator import InputValidator
-from ttvton.preprocessing.skin_mask_extractor import SkinMaskExtractor
-from ttvton.types import PipelineOutput, RegionPrompt
-from ttvton.utils.image import resize_for_pipeline
-from ttvton.utils.mask import dilate_mask, mask_to_pil
+from tatvton.config import TatVTONConfig
+from tatvton.models.model_loader import ModelLoader
+from tatvton.pipeline.inpainting_engine import InpaintingEngine
+from tatvton.postprocessing.compositing import Compositor
+from tatvton.preprocessing.input_validator import InputValidator
+from tatvton.preprocessing.skin_mask_extractor import SkinMaskExtractor
+from tatvton.types import PipelineOutput, RegionPrompt
+from tatvton.utils.image import resize_for_pipeline
+from tatvton.utils.mask import dilate_mask, mask_to_pil
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +31,7 @@ class TatVTONPipeline:
 
     Usage::
 
-        from ttvton import TatVTONPipeline, TatVTONConfig, PointPrompt
+        from tatvton import TatVTONPipeline, TatVTONConfig, PointPrompt
 
         pipe = TatVTONPipeline()
         result = pipe(
@@ -131,7 +131,7 @@ class TatVTONPipeline:
         # --- Phase 1b: DensePose (optional) ---
         if cfg.use_densepose:
             logger.info("Phase 1b: Extracting DensePose UV map")
-            from ttvton.preprocessing.densepose_extractor import DensePoseExtractor
+            from tatvton.preprocessing.densepose_extractor import DensePoseExtractor
 
             dp = DensePoseExtractor(
                 config_path="",  # TODO: make configurable

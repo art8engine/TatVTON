@@ -8,8 +8,8 @@ from typing import TYPE_CHECKING
 import numpy as np
 from PIL import Image
 
-from ttvton.types import BBoxPrompt, MaskResult, PointPrompt, RegionPrompt
-from ttvton.utils.image import pil_to_numpy
+from tatvton.types import BBoxPrompt, MaskResult, PointPrompt, RegionPrompt
+from tatvton.utils.image import pil_to_numpy
 
 if TYPE_CHECKING:
     from sam2.sam2_image_predictor import SAM2ImagePredictor

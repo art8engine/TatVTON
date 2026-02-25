@@ -2,14 +2,14 @@
 
 Public API::
 
-    from ttvton import TatVTONPipeline, TatVTONConfig
-    from ttvton import PointPrompt, BBoxPrompt, PipelineOutput, MaskResult
+    from tatvton import TatVTONPipeline, TatVTONConfig
+    from tatvton import PointPrompt, BBoxPrompt, PipelineOutput, MaskResult
 """
 
-from ttvton._version import __version__
-from ttvton.config import TatVTONConfig
-from ttvton.pipeline.tatvton_pipeline import TatVTONPipeline
-from ttvton.types import (
+from tatvton._version import __version__
+from tatvton.config import TatVTONConfig
+from tatvton.pipeline.tatvton_pipeline import TatVTONPipeline
+from tatvton.types import (
     BBoxPrompt,
     MaskResult,
     PipelineOutput,

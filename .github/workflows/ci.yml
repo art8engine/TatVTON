@@ -27,7 +27,7 @@ jobs:
           pip install mypy
 
       - name: MyPy
-        run: mypy ttvton
+        run: mypy tatvton
 
   test:
     name: Test (Python ${{ matrix.python-version }})
@@ -47,7 +47,7 @@ jobs:
         run: pip install -e ".[dev]"
 
       - name: Run tests
-        run: pytest -m "not gpu" --cov=ttvton --cov-report=xml --cov-report=term-missing
+        run: pytest -m "not gpu" --cov=tatvton --cov-report=xml --cov-report=term-missing
 
       - name: Upload coverage
         if: matrix.python-version == '3.12'

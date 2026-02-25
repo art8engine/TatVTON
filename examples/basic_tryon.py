@@ -2,7 +2,7 @@
 
 from PIL import Image
 
-from ttvton import PointPrompt, TatVTONPipeline
+from tatvton import PointPrompt, TatVTONPipeline
 
 # Load images
 body = Image.open("body.jpg")

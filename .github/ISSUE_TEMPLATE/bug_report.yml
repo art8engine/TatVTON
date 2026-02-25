@@ -56,7 +56,7 @@ body:
         - Python:
         - torch:
         - diffusers:
-        - ttvton:
+        - tatvton:
         - GPU:
     validations:
       required: true

@@ -2,7 +2,7 @@
 
 from PIL import Image
 
-from ttvton import BBoxPrompt, TatVTONConfig, TatVTONPipeline
+from tatvton import BBoxPrompt, TatVTONConfig, TatVTONPipeline
 
 # Custom configuration for 24 GB GPU
 config = TatVTONConfig(

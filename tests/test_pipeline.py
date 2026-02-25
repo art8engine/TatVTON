@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 from PIL import Image
 
-from ttvton import BBoxPrompt, PointPrompt, TatVTONConfig, TatVTONPipeline
+from tatvton import BBoxPrompt, PointPrompt, TatVTONConfig, TatVTONPipeline
 
 
 class TestTatVTONConfig:

@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ttvton"
+name = "tatvton"
 dynamic = ["version"]
 description = "TatVTON — Tattoo Virtual Try-On: realistic tattoo compositing on body photos using SAM + SDXL Inpainting + ControlNet + IP-Adapter"
 readme = "README.md"
@@ -48,12 +48,12 @@ dev = [
 ]
 
 [project.scripts]
-ttvton = "ttvton.cli:main"
+tatvton = "tatvton.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/khope/tatvton"
-Repository = "https://github.com/khope/tatvton"
-Issues = "https://github.com/khope/tatvton/issues"
+Homepage = "https://github.com/art8engine/TatVTON"
+Repository = "https://github.com/art8engine/TatVTON"
+Issues = "https://github.com/art8engine/TatVTON/issues"
 
 [tool.hatch.version]
 source = "vcs"
@@ -66,7 +66,7 @@ fallback_version = "0.0.0"
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["ttvton"]
+packages = ["tatvton"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

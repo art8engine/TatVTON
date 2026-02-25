@@ -5,7 +5,7 @@ from __future__ import annotations
 import numpy as np
 from PIL import Image
 
-from ttvton.utils.mask import (
+from tatvton.utils.mask import (
     dilate_mask,
     feather_mask,
     invert_mask,

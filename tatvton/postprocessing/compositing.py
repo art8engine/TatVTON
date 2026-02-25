@@ -5,8 +5,8 @@ from __future__ import annotations
 import numpy as np
 from PIL import Image
 
-from ttvton.utils.image import numpy_to_pil, pil_to_numpy
-from ttvton.utils.mask import dilate_mask, feather_mask
+from tatvton.utils.image import numpy_to_pil, pil_to_numpy
+from tatvton.utils.mask import dilate_mask, feather_mask
 
 
 class Compositor:

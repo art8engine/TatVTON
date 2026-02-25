@@ -40,7 +40,7 @@ def _parse_bbox(value: str) -> tuple[int, int, int, int]:
 def build_parser() -> argparse.ArgumentParser:
     """Build the CLI argument parser."""
     parser = argparse.ArgumentParser(
-        prog="ttvton",
+        prog="tatvton",
         description="TatVTON — Tattoo Virtual Try-On from the command line.",
     )
 
@@ -122,7 +122,7 @@ def main(argv: list[str] | None = None) -> None:
     # -- Late imports (heavy dependencies) ---------------------------------
     from PIL import Image
 
-    from ttvton import PointPrompt, BBoxPrompt, TatVTONConfig, TatVTONPipeline
+    from tatvton import PointPrompt, BBoxPrompt, TatVTONConfig, TatVTONPipeline
 
     # -- Load images -------------------------------------------------------
     print(f"Loading body image:   {args.body}")

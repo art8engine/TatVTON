@@ -2,7 +2,7 @@
 
 Usage::
 
-    from ttvton.utils.imports import require_densepose
+    from tatvton.utils.imports import require_densepose
 
     require_densepose()  # raises ImportError with install hint if missing
 """
@@ -38,7 +38,7 @@ def require_densepose() -> None:
     if not is_densepose_available():
         raise ImportError(
             "DensePose requires detectron2. "
-            'Install with: pip install "ttvton[densepose]"'
+            'Install with: pip install "tatvton[densepose]"'
         )
 
 

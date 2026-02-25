@@ -8,8 +8,8 @@ from typing import TYPE_CHECKING, Any
 import numpy as np
 from PIL import Image
 
-from ttvton.utils.image import pil_to_numpy
-from ttvton.utils.imports import require_densepose
+from tatvton.utils.image import pil_to_numpy
+from tatvton.utils.imports import require_densepose
 
 if TYPE_CHECKING:
     pass
@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 class DensePoseExtractor:
     """Extract DensePose IUV maps for ControlNet conditioning.
 
-    Requires ``pip install ttvton[densepose]``.
+    Requires ``pip install tatvton[densepose]``.
     """
 
     def __init__(self, config_path: str, weights_url: str, device: str = "cuda") -> None:

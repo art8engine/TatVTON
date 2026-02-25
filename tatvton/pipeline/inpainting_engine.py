@@ -8,8 +8,8 @@ from typing import Any
 import torch
 from PIL import Image
 
-from ttvton.config import TatVTONConfig
-from ttvton.models.model_loader import ModelLoader
+from tatvton.config import TatVTONConfig
+from tatvton.models.model_loader import ModelLoader
 
 logger = logging.getLogger(__name__)
 

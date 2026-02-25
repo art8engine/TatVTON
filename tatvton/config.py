@@ -10,7 +10,7 @@ import torch
 
 @dataclass(frozen=True)
 class TatVTONConfig:
-    """Immutable configuration for :class:`~ttvton.TatVTONPipeline`.
+    """Immutable configuration for :class:`~tatvton.TatVTONPipeline`.
 
     Three-level override strategy:
       1. Defaults here (optimised for 12 GB GPU).

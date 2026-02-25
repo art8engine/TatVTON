@@ -17,7 +17,7 @@ ignore = [
 ]
 
 [lint.isort]
-known-first-party = ["ttvton"]
+known-first-party = ["tatvton"]
 
 [format]
 quote-style = "double"

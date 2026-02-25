@@ -6,7 +6,7 @@ import numpy as np
 import torch
 from PIL import Image
 
-from ttvton.utils.image import (
+from tatvton.utils.image import (
     extract_alpha_mask,
     numpy_to_pil,
     pil_to_numpy,
