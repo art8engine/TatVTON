@@ -1,0 +1,18 @@
+# Dependencies for data collection & processing scripts
+# pip install -r scripts/requirements-data.txt
+
+# Reddit crawling
+praw>=7.7.0
+requests>=2.31.0
+
+# Image processing
+Pillow>=9.5.0
+numpy>=1.24.0
+
+# HuggingFace
+datasets>=2.16.0
+huggingface-hub>=0.20.0
+
+# DensePose (GPU only, install separately)
+# pip install 'git+https://github.com/facebookresearch/detectron2.git'
+# pip install 'git+https://github.com/facebookresearch/detectron2@main#subdirectory=projects/DensePose'

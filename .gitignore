@@ -51,5 +51,8 @@ notebooks/outputs/
 # OMC
 .omc/
 
+# Dataset (HF Hub only, not in git)
+/dataset/
+
 # Internal docs
 CODE_EXPLANATION.md
