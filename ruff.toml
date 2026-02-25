@@ -1,6 +1,6 @@
 target-version = "py39"
 line-length = 88
-src = ["src"]
+src = ["."]
 
 [lint]
 select = [

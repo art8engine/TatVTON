@@ -27,7 +27,7 @@ jobs:
           pip install mypy
 
       - name: MyPy
-        run: mypy src/ttvton
+        run: mypy ttvton
 
   test:
     name: Test (Python ${{ matrix.python-version }})
