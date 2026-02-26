@@ -207,7 +207,7 @@ def _get_image_url(post: dict) -> str | None:
     url = post.get("url", "")
     if _is_valid_image_url(url):
         return url
-    if post.get("is_gallery") and "media_metadata" in post:
+    if post.get("is_gallery") and post.get("media_metadata"):
         for media in post["media_metadata"].values():
             img_url = media.get("s", {}).get("u", "")
             if img_url:
@@ -302,7 +302,7 @@ def crawl_by_keywords(
                     "body_part": None,  # DensePose will fill this later
                 })
 
-            time.sleep(2)
+            time.sleep(5)  # 5s between pages to avoid rate limit
             if after is None:
                 break
 
