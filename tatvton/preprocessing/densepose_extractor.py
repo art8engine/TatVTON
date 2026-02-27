@@ -6,6 +6,7 @@ import logging
 from typing import TYPE_CHECKING, Any
 
 import numpy as np
+import torch
 from PIL import Image
 
 from tatvton.utils.image import pil_to_numpy
@@ -38,7 +39,8 @@ class DensePoseExtractor:
             ``(H, W, 3)`` PIL image encoding the IUV map.
         """
         img_array = pil_to_numpy(image)
-        outputs = self._predictor(img_array)
+        with torch.no_grad():
+            outputs = self._predictor(img_array)
 
         iuv_map = self._outputs_to_iuv(outputs, img_array.shape[:2])
         return Image.fromarray(iuv_map, mode="RGB")
@@ -52,8 +54,10 @@ class DensePoseExtractor:
         """Initialise a detectron2-based DensePose predictor."""
         from detectron2.config import get_cfg
         from detectron2.engine import DefaultPredictor
+        from densepose import add_densepose_config
 
         cfg = get_cfg()
+        add_densepose_config(cfg)
         cfg.merge_from_file(config_path)
         cfg.MODEL.WEIGHTS = weights_url
         cfg.MODEL.DEVICE = device
@@ -75,33 +79,38 @@ class DensePoseExtractor:
         dp = outputs["instances"].pred_densepose
         boxes = outputs["instances"].pred_boxes.tensor.cpu().numpy()
 
-        for i in range(len(dp)):
-            x1, y1, x2, y2 = boxes[i].astype(int)
+        for idx in range(len(boxes)):
+            x1, y1, x2, y2 = boxes[idx].astype(int)
             x1, y1 = max(0, x1), max(0, y1)
             x2, y2 = min(w, x2), min(h, y2)
-
-            result_i = dp[i].labels.cpu().numpy().astype(np.uint8)
-            result_u = (dp[i].uv[0].cpu().numpy() * 255).astype(np.uint8)
-            result_v = (dp[i].uv[1].cpu().numpy() * 255).astype(np.uint8)
-
-            bh, bw = y2 - y1, x2 - x1
-            if bh <= 0 or bw <= 0:
+            bw, bh = x2 - x1, y2 - y1
+            if bw <= 0 or bh <= 0:
                 continue
+
+            # DensePoseChartPredictorOutput: fine_segm (N,25,H,W), u/v (N,25,H,W)
+            s_tensor = dp.fine_segm[idx]                       # (25, Hbox, Wbox)
+            i_tensor = s_tensor.argmax(dim=0)                  # (Hbox, Wbox)
+            u_tensor = dp.u[idx]                               # (25, Hbox, Wbox)
+            v_tensor = dp.v[idx]                               # (25, Hbox, Wbox)
+
+            i_idx = i_tensor.unsqueeze(0)                      # (1, Hbox, Wbox)
+            u_val = u_tensor.gather(0, i_idx).squeeze(0)       # (Hbox, Wbox)
+            v_val = v_tensor.gather(0, i_idx).squeeze(0)       # (Hbox, Wbox)
+
+            i_np = i_tensor.cpu().numpy().astype(np.uint8)
+            u_np = (u_val.cpu().numpy() * 255).clip(0, 255).astype(np.uint8)
+            v_np = (v_val.cpu().numpy() * 255).clip(0, 255).astype(np.uint8)
 
             from PIL import Image as _Img
 
-            result_i_resized = np.array(
-                _Img.fromarray(result_i).resize((bw, bh), _Img.Resampling.NEAREST)
+            iuv[y1:y2, x1:x2, 0] = np.array(
+                _Img.fromarray(i_np).resize((bw, bh), _Img.Resampling.NEAREST)
             )
-            result_u_resized = np.array(
-                _Img.fromarray(result_u).resize((bw, bh), _Img.Resampling.BILINEAR)
+            iuv[y1:y2, x1:x2, 1] = np.array(
+                _Img.fromarray(u_np).resize((bw, bh), _Img.Resampling.BILINEAR)
             )
-            result_v_resized = np.array(
-                _Img.fromarray(result_v).resize((bw, bh), _Img.Resampling.BILINEAR)
+            iuv[y1:y2, x1:x2, 2] = np.array(
+                _Img.fromarray(v_np).resize((bw, bh), _Img.Resampling.BILINEAR)
             )
-
-            iuv[y1:y2, x1:x2, 0] = result_i_resized
-            iuv[y1:y2, x1:x2, 1] = result_u_resized
-            iuv[y1:y2, x1:x2, 2] = result_v_resized
 
         return iuv
