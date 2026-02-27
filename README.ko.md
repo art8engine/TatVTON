@@ -2,7 +2,15 @@
 
 **SAM 2** 마스크 추출과 **SDXL Inpainting + ControlNet + IP-Adapter** 합성을 이용한 사실적인 타투 합성.
 
+바디 사진, 타투 디자인, 타겟 영역을 입력하면 피부 텍스처, 조명, 신체 윤곽을 보존하면서 타투를 자연스럽게 합성한 결과를 생성합니다.
+
 **[English](./README.md)**
+
+## 데이터셋
+
+HuggingFace Hub에 큐레이팅된 타투 이미지 데이터셋을 제공합니다:
+
+**[rlaope/tatvton-tattoo-raw](https://huggingface.co/datasets/rlaope/tatvton-tattoo-raw)** — Reddit에서 크롤링한 5,400+ 타투 이미지, CLIP으로 품질 필터링 (피부 위 타투 검증). 6개 신체 부위 x 12가지 스타일.
 
 ## 설치
 

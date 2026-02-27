@@ -2,7 +2,15 @@
 
 Realistic tattoo compositing on body photos using **SAM 2** mask extraction and **SDXL Inpainting + ControlNet + IP-Adapter** synthesis.
 
+Given a body photo, a tattoo design, and a target region, TatVTON generates a photorealistic result with the tattoo naturally blended onto the skin — preserving skin texture, lighting, and body contours.
+
 **[한국어](./README.ko.md)**
+
+## Dataset
+
+We provide a curated tattoo image dataset on HuggingFace Hub:
+
+**[rlaope/tatvton-tattoo-raw](https://huggingface.co/datasets/rlaope/tatvton-tattoo-raw)** — 5,400+ tattoo images crawled from Reddit, filtered with CLIP for quality (tattoo-on-skin verification). Covers 6 body parts x 12 styles.
 
 ## Installation
 
